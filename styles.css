@@ -1,0 +1,69 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#sentence {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#speak-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#speak-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666666;
+}
+
+#speak-button:focus {
+    outline: none;
+}
+
+#feedback {
+    font-size: 18px;
+    color: red;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+video {
+    width: 320px;
+    height: 240px;
+    display: none;
+}
+
+.listening {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
