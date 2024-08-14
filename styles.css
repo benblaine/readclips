@@ -57,8 +57,9 @@ body {
 }
 
 video {
-    width: 320px;
-    height: 240px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
     display: none;
 }
 
