@@ -34,6 +34,12 @@ function startRecognition() {
     speakButton.classList.add('listening');
     speakButton.disabled = true;
 
+    // Timeout fallback to reset if it gets stuck
+    const recognitionTimeout = setTimeout(() => {
+        console.log('Recognition timeout. Resetting.');
+        resetButtonState();
+    }, 5000); // 5 seconds timeout
+
     recognition.start();
 
     recognition.onstart = function () {
@@ -43,10 +49,12 @@ function startRecognition() {
     recognition.onerror = function (event) {
         console.error('speech recognition error: ', event.error);
         alert('error occurred in recognition: ' + event.error);
+        clearTimeout(recognitionTimeout);
         resetButtonState(); // Reset button if there's an error
     };
 
     recognition.onresult = (event) => {
+        clearTimeout(recognitionTimeout);
         const saidText = event.results[0][0].transcript.toLowerCase();
         console.log('you said: ', saidText);
         feedbackElement.textContent = saidText;
@@ -64,6 +72,7 @@ function startRecognition() {
 
     recognition.onspeechend = function () {
         recognition.stop();
+        clearTimeout(recognitionTimeout);
         console.log('speech recognition ended');
         resetButtonState(); // Reset button after speech ends
     };
